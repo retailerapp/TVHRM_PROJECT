@@ -1,0 +1,789 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4835B1EA-98FC-45F8-98D9-3562D8D38C13}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Epoint.Systems.Commons</RootNamespace>
+    <AssemblyName>Epoint.Systems.Commons</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>epoint.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\TV.HRM\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\BuildRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports.Chart, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.CodeDomSerializer, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.CodeDomSerializer.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Design3, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.Design3.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.HtmlExport, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.HtmlExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.PdfExport, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.PdfExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.RtfExport, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.RtfExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.TextExport, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.TextExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.TiffExport, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.TiffExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Viewer3, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.Viewer3.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Web, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Web.Design, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.Web.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.XlsExport, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports.XlsExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports3, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ActiveReports3.dll</HintPath>
+    </Reference>
+    <Reference Include="ARVSPackage, Version=6.0.2019.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ARVSPackage.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Cells, Version=8.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\0-EpointERP\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.Data.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.Office.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.Printing.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.RichEdit.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.Sparkline.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.Utils.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.XtraBars.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.XtraEditors.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.XtraGrid.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.XtraLayout.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.XtraNavBar.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.XtraPrinting.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\DevExpress.XtraTreeList.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Epoint.Systems, Version=2.0.1.8, Culture=neutral, PublicKeyToken=3e07b9e1987d105e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\0-Accounting\Epoint.Systems.dll</HintPath>
+    </Reference>
+    <Reference Include="Epoint.Systems.Data, Version=2.0.1.8, Culture=neutral, PublicKeyToken=3e07b9e1987d105e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\0-Accounting\Epoint.Systems.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Epoint.Systems.Elements, Version=2.0.1.8, Culture=neutral, PublicKeyToken=3e07b9e1987d105e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\0-Accounting\Epoint.Systems.Elements.dll</HintPath>
+    </Reference>
+    <Reference Include="Epoint.Systems.Librarys, Version=2.0.1.8, Culture=neutral, PublicKeyToken=3e07b9e1987d105e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TV.HRM\Epoint.Systems.Librarys.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.1.271, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Epoint\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\0-Accounting\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commons\EpointMethod.cs" />
+    <Compile Include="Commons\Resource.cs" />
+    <Compile Include="Commons\EpointMessage.cs" />
+    <Compile Include="Commons\EpointProcessBox.cs" />
+    <Compile Include="Commons\EpointUpdateKey.cs" />
+    <Compile Include="Commons\Public.cs" />
+    <Compile Include="Commons\Common.cs" />
+    <Compile Include="Commons\Utils.cs" />
+    <Compile Include="Customizes\btPreview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\dgvReportGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\dgvVoucherGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmQuickLookupMulti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmQuickLookupMulti.designer.cs">
+      <DependentUpon>frmQuickLookupMulti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\ucWTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucWTable.Designer.cs">
+      <DependentUpon>ucWTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\frmWTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmModule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmMainS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmMainS.designer.cs">
+      <DependentUpon>frmMainS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\frmViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmRptView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmProcessBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\tbTabcontrol.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\menuStripSys.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\pnlLeftScreenBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucNarMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucNarMain.Designer.cs">
+      <DependentUpon>ucNarMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\frmChonNam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmChonNam.Designer.cs">
+      <DependentUpon>frmChonNam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\frmFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmFilter.Designer.cs">
+      <DependentUpon>frmFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\frmModuleManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmModuleManagement.Designer.cs">
+      <DependentUpon>frmModuleManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\rptChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\rptChart.designer.cs">
+      <DependentUpon>rptChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\toolStripReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\pnlCenter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\txtMa_Tte.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucCustomerInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucCustomerInfo.Designer.cs">
+      <DependentUpon>ucCustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\frmExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmExport.Designer.cs">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\btAccept.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\btCancel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\btDelete.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\btEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\btExit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\btFilter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\btgAccept.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\btgAccept.designer.cs">
+      <DependentUpon>btgAccept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\btNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\btPrint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\dgvReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\dgvVoucher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmQuickReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmQuickReport.Designer.cs">
+      <DependentUpon>frmQuickReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\menuStripMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\pnlLeftScreen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\rptFileReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\rptFileReport.Designer.cs">
+      <DependentUpon>rptFileReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\rptQuickReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\rptQuickReport.Designer.cs">
+      <DependentUpon>rptQuickReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\tsmiWindowManagement.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucMa_DvCs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucMa_DvCs.Designer.cs">
+      <DependentUpon>ucMa_DvCs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\frmEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmQuickLookup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmQuickLookup.designer.cs">
+      <DependentUpon>frmQuickLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Commons\Lookup.cs" />
+    <Compile Include="Customizes\frmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmSearch.designer.cs">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\toolStripEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customizes\frmMain.designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\statusStripMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\toolStripSystem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\toolStripView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\txtNgay_Begin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\txtNgay_End.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucMa_Data.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucMa_Data.Designer.cs">
+      <DependentUpon>ucMa_Data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\ucModuleLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucModuleLabel.Designer.cs">
+      <DependentUpon>ucModuleLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\ucModuleManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucModuleManagement.Designer.cs">
+      <DependentUpon>ucModuleManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\ucNotice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucNotice.Designer.cs">
+      <DependentUpon>ucNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\ucBpointVersion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucBpointVersion.Designer.cs">
+      <DependentUpon>ucBpointVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\ucTreeMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucTreeMain.Designer.cs">
+      <DependentUpon>ucTreeMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customizes\ucBluePointInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customizes\ucBluePointInfo.Designer.cs">
+      <DependentUpon>ucBluePointInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rtpDTCP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rtpDTCP.designer.cs">
+      <DependentUpon>rtpDTCP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rptDoanhThu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDoanhThu.Designer.cs">
+      <DependentUpon>rptDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rptDoanhThuChiPhi.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rptDoanhThuChiPhi.designer.cs">
+      <DependentUpon>rptDoanhThuChiPhi.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Customizes\frmQuickLookupMulti.resx">
+      <DependentUpon>frmQuickLookupMulti.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucWTable.resx">
+      <DependentUpon>ucWTable.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmWTable.resx">
+      <DependentUpon>frmWTable.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmModule.resx">
+      <DependentUpon>frmModule.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmMainS.resx">
+      <DependentUpon>frmMainS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmViewer.resx">
+      <DependentUpon>frmViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmRptView.resx">
+      <DependentUpon>frmRptView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmProcessBar.resx">
+      <DependentUpon>frmProcessBar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucNarMain.resx">
+      <DependentUpon>ucNarMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmChonNam.resx">
+      <DependentUpon>frmChonNam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmFilter.resx">
+      <DependentUpon>frmFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmModuleManagement.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmModuleManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\rptChart.resx">
+      <DependentUpon>rptChart.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\statusStripMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>statusStripMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucCustomerInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmExport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btAccept.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btAccept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btCancel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btDelete.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btExit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btExit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btFilter.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btgAccept.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btgAccept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btNew.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\btPrint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>btPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmEdit.resx">
+      <DependentUpon>frmEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmQuickReport.resx">
+      <DependentUpon>frmQuickReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmView.resx">
+      <DependentUpon>frmView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmQuickLookup.resx">
+      <DependentUpon>frmQuickLookup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\rptFileReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>rptFileReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\rptQuickReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>rptQuickReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\tsmiWindowManagement.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>tsmiWindowManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucMa_Data.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucMa_Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucMa_DvCs.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucMa_DvCs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucModuleLabel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucModuleLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucModuleManagement.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucModuleManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucNotice.resx">
+      <DependentUpon>ucNotice.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucBpointVersion.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucBpointVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucTreeMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucTreeMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customizes\ucBluePointInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucBluePointInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rtpDTCP.resx">
+      <DependentUpon>rtpDTCP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDoanhThu.resx">
+      <DependentUpon>rptDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rptDoanhThuChiPhi.resx">
+      <DependentUpon>rptDoanhThuChiPhi.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="epoint.snk" />
+    <None Include="Resources\Properties.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\charts1.jpeg" />
+    <Content Include="Resources\fn_ChangePass.sql" />
+    <Content Include="Resources\fn_Decrypt.sql" />
+    <Content Include="Resources\fn_Encrypt.sql" />
+    <Content Include="Resources\Report.png" />
+    <None Include="Resources\TeamViewer_Epoint.exe" />
+    <Content Include="Resources\sp_Process_DvcsPC.sql" />
+    <Content Include="Resources\ViewReport.png" />
+    <Content Include="Resources\sp_GetLicensePC.sql" />
+    <Content Include="Resources\sp_Process_Dvcs.sql" />
+    <Content Include="Resources\TeamViewerEPOINT.exe" />
+    <None Include="Resources\Logfile.png" />
+    <None Include="Resources\loadingQ.gif" />
+    <Content Include="Resources\TeamViewer.png" />
+    <None Include="Resources\accepted.png" />
+    <None Include="Resources\accepted1.png" />
+    <None Include="Resources\Add.png" />
+    <Content Include="Resources\accept.png" />
+    <Content Include="Resources\Background.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\Calculator.png" />
+    <None Include="Resources\Chart.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\Design.png" />
+    <None Include="Resources\Dvcs.png" />
+    <None Include="Resources\Edit.png" />
+    <Content Include="Resources\Background_E.png" />
+    <Content Include="Resources\Background_V.png" />
+    <Content Include="Resources\close3.png" />
+    <Content Include="Resources\Excel.png" />
+    <None Include="Resources\Export.png" />
+    <None Include="Resources\Filter.png" />
+    <None Include="Resources\Exit.png" />
+    <Content Include="Resources\iconBranch.png" />
+    <None Include="Resources\Preview.png" />
+    <None Include="Resources\print_48.png" />
+    <None Include="Resources\QuickReport.png" />
+    <None Include="Resources\Reload.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\reload-icon.png" />
+    <Content Include="Resources\sum.gif" />
+    <None Include="Resources\Sum1.png" />
+    <Content Include="Resources\system-restart.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>if /I "$(ConfigurationName)" == "Release" Eazfuscator.NET.exe "$(TargetPath)" --msbuild-project-path "$(ProjectPath)" --msbuild-project-configuration "$(ConfigurationName)" -n --newline-flush</PostBuildEvent>
+  </PropertyGroup>
+</Project>

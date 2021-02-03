@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="QuickReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QuickReport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logfile.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Exit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print_48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chart.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accepted2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\accepted.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Preview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\background.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sum1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sum1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Background_E" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\background_e.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dvcs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dvcs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reload_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\reload-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calculator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Calculator.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Edit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Background_V" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\background_v.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tick.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Design" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Design.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accepted1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\accepted1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Export" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Export.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Properties" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Properties.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Reload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Reload.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Filter.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TeamViewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\teamviewer.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\accepted.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\close3.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accepted11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\accepted1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loadingQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loadingQ.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sp_GetLicensePC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\sp_getlicensepc.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="sp_Process_Dvcs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\sp_process_dvcs.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ViewReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\viewreport.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Report" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\report.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Background1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\background.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fn_ChangePass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fn_changepass.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="fn_Decrypt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fn_decrypt.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="fn_Encrypt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fn_encrypt.sql;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Drop_Process" xml:space="preserve">
+    <value>IF exists(SELECT * from sys.objects where name = 'sp_Process_Dvcs' AND type = 'P') DROP PROC sp_Process_Dvcs
+IF exists(SELECT * from sys.objects where name = 'sp_Process_DvcsPC' AND type = 'P') DROP PROC sp_Process_DvcsPC</value>
+  </data>
+  <data name="sp_Process_Lics" xml:space="preserve">
+    <value>CREATE PROC [dbo].[sp_Process_Dvcs]
+(
+	@Ma_Dvcs VARCHAR(3) = 'E01',
+	@Drive_Info VARCHAR(100) = 'E63374FA'
+)
+WITH ENCRYPTION
+AS
+	--RETURN 
+BEGIN
+	
+		
+		
+		BEGIN TRY
+				DECLARE @_Pc_Name VARCHAR(30) 
+				DECLARE @_Dvcs VARCHAR(30) 
+				DECLARE @_CustID VARCHAR(30) 
+				DECLARE @_Con_Server VARCHAR(100)
+				DECLARE @_DataBase_Name VARCHAR(100)
+				DECLARE @_Server_Name VARCHAR(100)
+				
+				
+				
+				SELECT @_DataBase_Name = DB_NAME() 
+				SELECT @_Server_Name  = CAST(SERVERPROPERTY('ServerName') AS VARCHAR(100))
+								
+				SELECT @_Pc_Name = HOST_NAME()
+				
+				SELECT @_Dvcs = Ma_Dvcs ,@_CustID = CustID FROM SYSDMDVCS WHERE Ma_DvCs = @Ma_Dvcs
+
+				IF  OBJECT_ID('TempDB..#_LIS_SERVER') IS NOT NULL
+					DROP TABLE #_LIS_SERVER
+					
+				IF  OBJECT_ID('TempDB..#_Temp') IS NOT NULL
+					DROP TABLE #_Temp
+				
+				
+				
+					
+				SELECT *
+						INTO #_LIS_SERVER
+				FROM 
+				OPENDATASOURCE('SQLNCLI','Data Source=epoint.myftp.org;User id = hungnv ; password = P@ssw0rd@012013;;Connect Timeout = 300').Epoint_Customer.dbo.SYSLICS 
+				WHERE CustID = @_CustID	AND PC_Name = @_Pc_Name AND DataBase_Name = @_Database_Name AND Drive_Info = @Drive_Info
+
+				
+				
+				IF NOT EXISTS( SELECT Ma_Dvcs FROM SYSLICSCLIENT (NOLOCK) WHERE PC_Name = @_Pc_Name AND Ma_Dvcs = @Ma_Dvcs AND CustID = @_CustID AND Server_Name = @_Server_Name AND DataBase_Name = @_DataBase_Name AND Drive_Info = @Drive_Info)
+				BEGIN
+						
+						INSERT INTO  SYSLICSCLIENT  ( Ma_Dvcs, CustID, PC_Name, Server_Name,Database_Name, Key_Log, Key_Module, Ten_Dvcs,Drive_Info,  DateAcc, UserID, Active)
+						SELECT Ma_Dvcs, CustID,@_Pc_Name, @_Server_Name,@_DataBase_Name,Key_Log, Key_Module, Ten_Dvcs,  @Drive_Info  ,GETDATE(),'',1
+							FROM SYSDMDVCS WHERE Ma_DvCs = @Ma_Dvcs
+				END
+				
+				IF NOT EXISTS( SELECT Ma_Dvcs FROM #_LIS_SERVER WHERE PC_Name = @_Pc_Name AND Ma_Dvcs = @Ma_Dvcs AND CustID = @_CustID AND Server_Name = @_Server_Name AND DataBase_Name = @_DataBase_Name AND Drive_Info = @Drive_Info)
+				BEGIN
+					BEGIN TRY
+						
+						INSERT INTO  OPENDATASOURCE('SQLNCLI',
+								 'Data Source=epoint.myftp.org;User id = hungnv ; password = P@ssw0rd@012013;;Connect Timeout = 300').Epoint_Customer.dbo.SYSLICS
+								 ( Ma_Dvcs, CustID, PC_Name ,Server_Name,Database_Name, Key_Log, Key_Module, Ten_Dvcs, DateAcc,Drive_Info, UserID, Active)
+						SELECT Ma_Dvcs, CustID, PC_Name , Server_Name, Database_Name ,Key_Log, Key_Module, Ten_Dvcs, DateAcc,Drive_Info, UserID, Active
+							FROM SYSLICSCLIENT (NOLOCK) WHERE Ma_DvCs = @Ma_Dvcs AND PC_Name = @_Pc_Name AND Drive_Info = @Drive_Info AND DataBase_Name = @_DataBase_Name
+					END TRY 
+					BEGIN CATCH 
+						PRINT 'Error'
+					END CATCH
+					
+				END
+				
+				
+				
+				SELECT *
+				INTO #_Temp
+				FROM 
+				OPENDATASOURCE('SQLNCLI',
+								 'Data Source=epoint.myftp.org;User id = hungnv ; password = P@ssw0rd@012013;;Connect Timeout = 300').Epoint_Customer.dbo.SYSLICS
+				WHERE CustID = @_CustID	AND Drive_Info = @Drive_Info
+ 				
+				
+				UPDATE s1 SET s1.Active = s2.Active ,s1.DateAcc = s2.DateAcc  ,s1.SQL_TEXTRUN = s2.SQL_TEXTRUN,
+								s1.Message = s2.Message
+					
+					FROM SYSLICSCLIENT s1
+					INNER JOIN #_Temp s2 ON s1.Ma_Dvcs = s2.Ma_Dvcs AND s1.Pc_Name = s2.Pc_Name AND s1.CustID = s2. CustID AND s1.Database_Name = s2.Database_Name AND s1.Drive_Info  = s2.Drive_Info 
+				
+				UPDATE OPENDATASOURCE('SQLNCLI',
+								 'Data Source=epoint.myftp.org;User id = hungnv ; password = P@ssw0rd@012013;').Epoint_Customer.dbo.SYSLICS
+								 SET IsUpdate = 0 WHERE CustID = @_CustID AND PC_Name = @_Pc_Name AND Ma_Dvcs = @Ma_Dvcs AND CustID = @_CustID AND Server_Name = @_Server_Name AND DataBase_Name = @_DataBase_Name AND Drive_Info = @Drive_Info
+
+		END TRY
+		BEGIN CATCH 
+			PRINT 'Error'
+		END CATCH
+END</value>
+  </data>
+  <data name="sp_Process_LicsPC" xml:space="preserve">
+    <value>CREATE PROC [dbo].[sp_Process_DvcsPC]
+(
+	@Ma_Dvcs VARCHAR(3) = 'E01',
+	@Drive_Info VARCHAR(100) = '5EA9E0EB'
+)
+WITH ENCRYPTION
+AS
+	--RETURN 
+BEGIN
+	
+		
+		
+		BEGIN TRY
+				DECLARE @_Pc_Name VARCHAR(30) 
+				DECLARE @_Dvcs VARCHAR(30) 
+				DECLARE @_CustID VARCHAR(30) 
+				DECLARE @_Con_Server VARCHAR(100)
+				DECLARE @_DataBase_Name VARCHAR(100)
+				DECLARE @_Server_Name VARCHAR(100)
+				
+				
+				
+				SELECT @_DataBase_Name = DB_NAME() 
+				SELECT @_Server_Name  = CAST(SERVERPROPERTY('ServerName') AS VARCHAR(100))
+								
+				SELECT @_Pc_Name = HOST_NAME()
+				
+				SELECT @_Dvcs = Ma_Dvcs ,@_CustID = CustID FROM SYSDMDVCS WHERE Ma_DvCs = @Ma_Dvcs
+
+				IF  OBJECT_ID('TempDB..#_LIS_SERVER') IS NOT NULL
+					DROP TABLE #_LIS_SERVER
+					
+				IF  OBJECT_ID('TempDB..#_Temp') IS NOT NULL
+					DROP TABLE #_Temp			
+				
+				
+			
+				
+				IF NOT EXISTS( SELECT Ma_Dvcs FROM SYSLICSCLIENT (NOLOCK) WHERE PC_Name = @_Pc_Name AND Ma_Dvcs = @Ma_Dvcs AND CustID = @_CustID AND Server_Name = @_Server_Name AND DataBase_Name = @_DataBase_Name AND Drive_Info = @Drive_Info)
+				BEGIN
+						
+						INSERT INTO  SYSLICSCLIENT  ( Ma_Dvcs, CustID, PC_Name, Server_Name,Database_Name, Key_Log, Key_Module, Ten_Dvcs,Drive_Info,  DateAcc, UserID, Active)
+						SELECT Ma_Dvcs, CustID,@_Pc_Name, @_Server_Name,@_DataBase_Name,Key_Log, Key_Module, Ten_Dvcs,  @Drive_Info  ,GETDATE(),'',1
+							FROM SYSDMDVCS WHERE Ma_DvCs = @Ma_Dvcs
+				END
+			
+
+			--select * from Sys.columns WHERE  OBJECT_Name(Object_Id)  = 'SYSDMDVCS' AND Name = 'Ngay_Active' 
+
+			
+				
+				IF EXISTS(	select * from Sys.columns WHERE  OBJECT_Name(Object_Id)  = 'SYSDMDVCS' AND Name = 'Date_Active' )
+				BEGIN
+					
+					EXEC ('
+					
+					IF EXISTS( SELECT Ma_DvCs FROm SYSDMDVCS WHERE DATEDIFF(DAY,Date_Active,GETDATE()) &gt; Date_Lics AND Date_Lics &gt; 0 AND Ma_Dvcs = '''+@Ma_Dvcs+''')
+					BEGIN
+							UPDATE SYSLICSCLIENT  SET Active = 0,Message = N''Chương trình đã hết hạn dùng thử !''
+								WHERE Ma_DvCs = '''+@Ma_Dvcs+'''
+
+					END
+					ELSE
+							UPDATE SYSLICSCLIENT  SET Active = 1,Message = N''''
+								WHERE Ma_DvCs = '''+@Ma_Dvcs+'''
+					
+					')
+				END
+
+
+				--SELECT DATEDIFF(DAY,'2017-01-01',GETDATE())
+				
+		END TRY
+		BEGIN CATCH 
+			PRINT 'Error'
+		END CATCH
+END</value>
+  </data>
+</root>
