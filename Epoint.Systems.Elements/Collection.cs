@@ -82,9 +82,9 @@ namespace Epoint.Systems.Elements
                 {
                     return License.DecryptString(strConnect, "qwertyuiopasdfghjklzxcvbnm");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Config database error!");
+                    MessageBox.Show("Config database error!\n" + ex.Message);
                     return string.Empty;
                 }
             }

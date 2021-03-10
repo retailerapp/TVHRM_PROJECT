@@ -8,38 +8,38 @@ using System.Runtime.InteropServices;
 
 namespace Epoint.Systems.Elements
 {
-	public class Element
-	{
-		private static SqlConnection Connection = new SqlConnection();
+    public class Element
+    {
+        private static SqlConnection Connection = new SqlConnection();
         private static SqlConnection ConnectionUpdate = new SqlConnection();
 
-		private static bool is_Running = false;
+        private static bool is_Running = false;
         private static bool is_Server = true;
         private static bool is_CheckRunLics = true;
         private static bool is_CheckRunLiveUpdate = false;
         private static bool is_FrmEditRunning = false;
         private static bool is_ShowConfig = false;
-		private static string User_Id;
-		private static bool Is_Admin;
-		private static string Ma_DvCs;
-		private static string Ma_Data;
-		private static bool Tong_Hop;
-		private static DateTime DateTime_Log ;
-		private static int Th_Bd_Ht;
-		private static int WorkingYear;
+        private static string User_Id;
+        private static bool Is_Admin;
+        private static string Ma_DvCs;
+        private static string Ma_Data;
+        private static bool Tong_Hop;
+        private static DateTime DateTime_Log;
+        private static int Th_Bd_Ht;
+        private static int WorkingYear;
         private static int iReminder_count;
-		private static enuLanguageType Language;
+        private static enuLanguageType Language;
         private static DateTime Ngay_Ct;
-		private static DateTime Ngay_Ct1;
-		private static DateTime Ngay_Ct2;
-		private static Timer Timer = new Timer();
-		private static Form frmcalc;
-		private static Form frmsearch;
-		private static Form frmmain;
-		private static Form frmactivemain;
-		private static bool Run_Service = true;
-		private static string Dia_Chi_Dv; //Thêm Địa chỉ cho từng đơn vị
-		private static object ActiveReport = null; // plan Load sẵn ActiveReport khi khởi động chương trình, để in báo cáo cho nhanh
+        private static DateTime Ngay_Ct1;
+        private static DateTime Ngay_Ct2;
+        private static Timer Timer = new Timer();
+        private static Form frmcalc;
+        private static Form frmsearch;
+        private static Form frmmain;
+        private static Form frmactivemain;
+        private static bool Run_Service = true;
+        private static string Dia_Chi_Dv; //Thêm Địa chỉ cho từng đơn vị
+        private static object ActiveReport = null; // plan Load sẵn ActiveReport khi khởi động chương trình, để in báo cáo cho nhanh
         private static bool TextToolStrip;
         private static string REPORTPATH;
         private static string ConfigFile;
@@ -56,25 +56,25 @@ namespace Epoint.Systems.Elements
             ColorDepth = ColorDepth.Depth32Bit,
             ImageSize = new System.Drawing.Size(16, 16)
         };
-                
 
-		public static string sysMa_DvCs
-		{
-			set { Ma_DvCs = value; }
-			get { return Ma_DvCs; }
-		}
 
-		public static bool Is_Running
-		{
-			set
-			{
-				is_Running = value;
-			}
-			get
-			{
-				return is_Running;
-			}
-		}
+        public static string sysMa_DvCs
+        {
+            set { Ma_DvCs = value; }
+            get { return Ma_DvCs; }
+        }
+
+        public static bool Is_Running
+        {
+            set
+            {
+                is_Running = value;
+            }
+            get
+            {
+                return is_Running;
+            }
+        }
         public static bool Is_CheckRunLics
         {
             set
@@ -131,16 +131,16 @@ namespace Epoint.Systems.Elements
             }
         }
         public static SqlConnection sysConnection
-		{
-			set
-			{
-				Connection = value;
-			}
-			get
-			{
-				return Connection;
-			}
-		}
+        {
+            set
+            {
+                Connection = value;
+            }
+            get
+            {
+                return Connection;
+            }
+        }
         public static SqlConnection sysConnectionUpdate
         {
             set
@@ -152,33 +152,33 @@ namespace Epoint.Systems.Elements
                 return Connection;
             }
         }
-		public static DateTime sysNgay_Min
-		{
-			get
-			{
-				return DateTime.Parse("01/01/1900");
-			}
-		}
+        public static DateTime sysNgay_Min
+        {
+            get
+            {
+                return DateTime.Parse("01/01/1900");
+            }
+        }
 
-		public static DateTime sysNgay_Max
-		{
-			get
-			{
-				return DateTime.Parse("31/12/3000");
-			}
-		}
+        public static DateTime sysNgay_Max
+        {
+            get
+            {
+                return DateTime.Parse("31/12/3000");
+            }
+        }
 
-		public static int sysWorkingYear
-		{
-			set 
-			{
-				WorkingYear = value;
-			}
-			get
-			{
-				return WorkingYear;
-			}
-		}
+        public static int sysWorkingYear
+        {
+            set
+            {
+                WorkingYear = value;
+            }
+            get
+            {
+                return WorkingYear;
+            }
+        }
         public static int Reminder_count
         {
             set
@@ -190,118 +190,118 @@ namespace Epoint.Systems.Elements
                 return iReminder_count;
             }
         }
-		public static string sysDatabaseName
-		{			
-			get
-			{
-				return sysConnection.Database;
-			}
-		}
+        public static string sysDatabaseName
+        {
+            get
+            {
+                return sysConnection.Database;
+            }
+        }
 
-		public static int sysTh_Bd_Ht
-		{
-			set
-			{
-				Th_Bd_Ht = value;
-			}
-			get
-			{
-				return Th_Bd_Ht;
-			}
-		}
+        public static int sysTh_Bd_Ht
+        {
+            set
+            {
+                Th_Bd_Ht = value;
+            }
+            get
+            {
+                return Th_Bd_Ht;
+            }
+        }
 
-		public static DateTime sysNgay_Begin
-		{
-			
-			get
-			{
-				return DateTime.Parse("01/01/" + WorkingYear);
-			}
-		}
+        public static DateTime sysNgay_Begin
+        {
 
-		public static DateTime sysNgay_End
-		{
-			get
-			{
-				return DateTime.Parse("31/12/" + WorkingYear);
-			}
-		}
+            get
+            {
+                return DateTime.Parse("01/01/" + WorkingYear);
+            }
+        }
 
-		public static string sysUser_Id
-		{
-			set
-			{
-				User_Id = value;
-			}
+        public static DateTime sysNgay_End
+        {
+            get
+            {
+                return DateTime.Parse("31/12/" + WorkingYear);
+            }
+        }
 
-			get 
-			{
-				return User_Id;
-			}
-		}
+        public static string sysUser_Id
+        {
+            set
+            {
+                User_Id = value;
+            }
 
-		public static bool sysIs_Admin
-		{
-			set
-			{
-				Is_Admin = value;
-			}
+            get
+            {
+                return User_Id;
+            }
+        }
 
-			get
-			{
-				return Is_Admin;
-			}
-		}
+        public static bool sysIs_Admin
+        {
+            set
+            {
+                Is_Admin = value;
+            }
 
-		public static string sysMa_Data
-		{
-			set
-			{
-				Ma_Data = value;
-			}
-			get
-			{
-				return Ma_Data;
-			}
+            get
+            {
+                return Is_Admin;
+            }
+        }
 
-		}
+        public static string sysMa_Data
+        {
+            set
+            {
+                Ma_Data = value;
+            }
+            get
+            {
+                return Ma_Data;
+            }
 
-		public static bool sysTong_Hop
-		{
-			set
-			{
-				Tong_Hop = value;
-			}
-			get
-			{
-				return Tong_Hop;
-			}
+        }
 
-		}
+        public static bool sysTong_Hop
+        {
+            set
+            {
+                Tong_Hop = value;
+            }
+            get
+            {
+                return Tong_Hop;
+            }
 
-		public static enuLanguageType sysLanguage
-		{
-			set 
-			{
-				Language = value;
-			}
-			get
-			{
-				return Language;
-			}
-		}
+        }
 
-		public static DateTime sysDateTime_Log
-		{
-			set
-			{
-				DateTime_Log = value;
-			}
-			get 
-			{
-				return DateTime_Log;
-			}
-		}
+        public static enuLanguageType sysLanguage
+        {
+            set
+            {
+                Language = value;
+            }
+            get
+            {
+                return Language;
+            }
+        }
+
+        public static DateTime sysDateTime_Log
+        {
+            set
+            {
+                DateTime_Log = value;
+            }
+            get
+            {
+                return DateTime_Log;
+            }
+        }
         public static DateTime sysNgay_Ct
         {
             set
@@ -316,150 +316,150 @@ namespace Epoint.Systems.Elements
                     return Ngay_Ct;
             }
         }
-		public static DateTime sysNgay_Ct1
-		{
-			set 
-			{ 
-				Ngay_Ct1 = value; 
-			}
-			get 
-			{
-				if (Ngay_Ct1 == null || Ngay_Ct1 < sysNgay_Min)
-					return DateTime.Today;
-				else
-					return Ngay_Ct1;
-			}
-		}
+        public static DateTime sysNgay_Ct1
+        {
+            set
+            {
+                Ngay_Ct1 = value;
+            }
+            get
+            {
+                if (Ngay_Ct1 == null || Ngay_Ct1 < sysNgay_Min)
+                    return DateTime.Today;
+                else
+                    return Ngay_Ct1;
+            }
+        }
 
-		public static DateTime sysNgay_Ct2
-		{
-			set 
-			{ 
-				Ngay_Ct2 = value;
-			}
-			get 
-			{
-				if (Ngay_Ct2 == null || Ngay_Ct2 < sysNgay_Min)
-					return DateTime.Today;
-				else
-					return Ngay_Ct2;
-			}
-		}
+        public static DateTime sysNgay_Ct2
+        {
+            set
+            {
+                Ngay_Ct2 = value;
+            }
+            get
+            {
+                if (Ngay_Ct2 == null || Ngay_Ct2 < sysNgay_Min)
+                    return DateTime.Today;
+                else
+                    return Ngay_Ct2;
+            }
+        }
 
-		public static Timer sysTimer
-		{
-			get {return Timer;}
-		}
+        public static Timer sysTimer
+        {
+            get { return Timer; }
+        }
 
-		public static Form frmCalc
-		{
-			set
-			{
-				frmcalc = value;
-			}
-			get
-			{
-				return frmcalc;
-			}
-		}
+        public static Form frmCalc
+        {
+            set
+            {
+                frmcalc = value;
+            }
+            get
+            {
+                return frmcalc;
+            }
+        }
 
-		public static Form frmSearch
-		{
-			set
-			{
-				frmsearch = value;
-			}
-			get
-			{
-				return frmsearch;
-			}
-		}
+        public static Form frmSearch
+        {
+            set
+            {
+                frmsearch = value;
+            }
+            get
+            {
+                return frmsearch;
+            }
+        }
 
-		public static Form frmMain
-		{
-			set
-			{
-				frmmain = value;
-			}
-			get
-			{
-				return frmmain;
-			}
-		}
+        public static Form frmMain
+        {
+            set
+            {
+                frmmain = value;
+            }
+            get
+            {
+                return frmmain;
+            }
+        }
 
-		public static Form frmActiveMain
-		{
-			set
-			{
-				if (value != frmactivemain)
-				{
-					Form frmHide = frmactivemain;
+        public static Form frmActiveMain
+        {
+            set
+            {
+                if (value != frmactivemain)
+                {
+                    Form frmHide = frmactivemain;
 
-					frmactivemain = value;
+                    frmactivemain = value;
 
-					if (frmactivemain != null)
-					{
-						frmactivemain.WindowState = FormWindowState.Maximized;
-						frmactivemain.ShowInTaskbar = true;
+                    if (frmactivemain != null)
+                    {
+                        frmactivemain.WindowState = FormWindowState.Maximized;
+                        frmactivemain.ShowInTaskbar = true;
 
-						if (!frmactivemain.Visible)
-							frmactivemain.Visible = true;
+                        if (!frmactivemain.Visible)
+                            frmactivemain.Visible = true;
 
-						frmactivemain.Activate();
-					}
+                        frmactivemain.Activate();
+                    }
 
-					if (frmHide != null)
-						frmHide.Hide();
-				}
-			}
-			get
-			{
-				return frmactivemain;
-			}
-		}
+                    if (frmHide != null)
+                        frmHide.Hide();
+                }
+            }
+            get
+            {
+                return frmactivemain;
+            }
+        }
 
-		public static bool sysRun_Service
-		{
-			set
-			{
-				Run_Service = value;
-			}
-			get
-			{
-				return Run_Service;
-			}
-		}
+        public static bool sysRun_Service
+        {
+            set
+            {
+                Run_Service = value;
+            }
+            get
+            {
+                return Run_Service;
+            }
+        }
 
-        
-		public static string sysTen_DvCs
-		{
-			get
-			{
+
+        public static string sysTen_DvCs
+        {
+            get
+            {
                 return Core.Ten_Dvcs(sysMa_DvCs);
-			}
-		}
+            }
+        }
 
-		public static string sysTen_Dvi
-		{
-			get { return sysTen_DvCs; }
-		}
+        public static string sysTen_Dvi
+        {
+            get { return sysTen_DvCs; }
+        }
 
-		public static string sysMa_Tte
-		{
-			get { return Core.Curency(); }
-		}
+        public static string sysMa_Tte
+        {
+            get { return Core.Curency(); }
+        }
 
-		public static string sysDia_Chi_Dv
-		{
-			set
-			{
-				Dia_Chi_Dv = value;
-			}
-			get
-			{
-				return Dia_Chi_Dv;
-			}
-		}
+        public static string sysDia_Chi_Dv
+        {
+            set
+            {
+                Dia_Chi_Dv = value;
+            }
+            get
+            {
+                return Dia_Chi_Dv;
+            }
+        }
         public static string sysREPORTPATH
         {
             set
@@ -493,17 +493,17 @@ namespace Epoint.Systems.Elements
                 return ConfigFileUpdate;
             }
         }
-		public static object sysActiveReport
-		{
-			set
-			{
-				ActiveReport = value;
-			}
-			get
-			{
-				return ActiveReport;
-			}
-		}
+        public static object sysActiveReport
+        {
+            set
+            {
+                ActiveReport = value;
+            }
+            get
+            {
+                return ActiveReport;
+            }
+        }
 
         public static bool sysTextToolStrip
         {
@@ -582,7 +582,7 @@ namespace Epoint.Systems.Elements
                 return LinkInfo;
             }
         }
-	}
+    }
     public class Follower
     {
         public string id { get; set; }
