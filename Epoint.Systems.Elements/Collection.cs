@@ -73,7 +73,7 @@ namespace Epoint.Systems.Elements
             //string strfile = Application.StartupPath + "\\EpointConfig.epoint";
             string strfile = Application.StartupPath + "\\" + Element.sysConfigFile;
             if (!File.Exists(strfile))
-                MessageBox.Show("Config database error!");
+                MessageBox.Show("Config file not exist:\n" + strfile);
             using (StreamReader sr = new StreamReader(strfile))
             {
                 string strConnect = sr.ReadToEnd();
@@ -88,6 +88,29 @@ namespace Epoint.Systems.Elements
                     return string.Empty;
                 }
             }
+        }
+        public static string ConnectionString(string strConnect)
+        {
+            string strfile = string.Empty;
+            if (strConnect == string.Empty)
+            {
+                strfile = Application.StartupPath + "\\" + Element.sysConfigFile;
+                if (!File.Exists(strfile))
+                    throw new Exception("Config file not exist:\n" + strfile);
+                using (StreamReader sr = new StreamReader(strfile))
+                {
+                    strConnect = sr.ReadToEnd();
+                }
+            }
+            try
+            {
+                return License.DecryptString(strConnect, "qwertyuiopasdfghjklzxcvbnm");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Config database error!\n" + ex.Message);
+            }
+           
         }
         public static string ConnectionStringSync1()
         {
