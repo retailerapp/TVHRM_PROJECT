@@ -24,13 +24,13 @@ using Newtonsoft.Json;
 namespace Epoint.Modules.Zalo
 {
     public partial class frmZaloResource : Epoint.Systems.Customizes.frmView//Epoint.Lists.frmView
-	{		
+    {
 
-		#region Khai bao bien
-		DataTable dtResource;
-		DataRow drCurrent;
-		BindingSource bdsResource = new BindingSource();
-		tlControl tlResource = new tlControl();
+        #region Khai bao bien
+        DataTable dtResource;
+        DataRow drCurrent;
+        BindingSource bdsResource = new BindingSource();
+        tlControl tlResource = new tlControl();
 
         public Hashtable htHistory = new Hashtable();
         public string strTableName = string.Empty;
@@ -43,18 +43,18 @@ namespace Epoint.Modules.Zalo
         ZaloClient client;
         int MsgIDCur = 0;
         string ReleaseType = "S";
-       
+
         //string AppConfigFile = AppDomain.CurrentDomain.BaseDirectory + @"\ZALOOFFICIALL.exe.config";
         string FilePathZalo = AppDomain.CurrentDomain.BaseDirectory + @"\tempzalo\";
-		#endregion 				
+        #endregion
 
-		#region Contructor
+        #region Contructor
 
         public frmZaloResource()
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
 
-			tlResource.MouseDoubleClick += new MouseEventHandler(tlResource_MouseDoubleClick);
+            tlResource.MouseDoubleClick += new MouseEventHandler(tlResource_MouseDoubleClick);
             tlResource.MouseClick += new MouseEventHandler(tlResource_MouseClick);
             //cboFile_Type.SelectedValueChanged +=new EventHandler(cboFile_Type_SelectedValueChanged);
             //cboFile_Type.SelectedIndexChanged += new EventHandler(cboFile_Type_SelectedIndexChanged);            
@@ -63,18 +63,18 @@ namespace Epoint.Modules.Zalo
             client = new ZaloClient(access_token);
         }
 
-        
 
-		public override void Load()
-		{
+
+        public override void Load()
+        {
             this.cboFile_Type.DataSource = SQLExec.ExecuteReturnDt("SELECT DISTINCT '*' AS File_Type UNION SELECT File_Type FROM ZALORESOURCES ORDER BY 1");
             this.cboFile_Type.DisplayMember = "File_Type";
-            this.cboFile_Type.ValueMember = "File_Type";           
+            this.cboFile_Type.ValueMember = "File_Type";
 
             Init();
             Build();
-			FillData();
-			BindingLanguage();
+            FillData();
+            BindingLanguage();
 
             if (bdsResource != null)
             {
@@ -83,16 +83,16 @@ namespace Epoint.Modules.Zalo
                 //this.objFileContent = Resource.LoadResource(drCurrent["File_Id"].ToString());
             }
 
-			if (this.isLookup)
-				this.ShowDialog();
-			else
-				this.Show();
-		}
+            if (this.isLookup)
+                this.ShowDialog();
+            else
+                this.Show();
+        }
 
-		public override void LoadLookup()
-		{
-			this.Load();
-		}
+        public override void LoadLookup()
+        {
+            this.Load();
+        }
         private void Init()
         {
             htHistory["DIEN_GIAI"] = "Quản lý tập tin";
@@ -101,15 +101,15 @@ namespace Epoint.Modules.Zalo
             strName = "FILE_NAME";
         }
 
-		#endregion
+        #endregion
 
-		#region Build, FillData
+        #region Build, FillData
 
-		private void Build()
-		{
-			tlResource.KeyFieldName = "FILE_ID";
+        private void Build()
+        {
+            tlResource.KeyFieldName = "FILE_ID";
             tlResource.ParentFieldName = "FILE_ID_PARENT";
-			tlResource.Dock = DockStyle.Fill;
+            tlResource.Dock = DockStyle.Fill;
 
             this.splitContainer_Resource.Panel2.Controls.Add(tlResource);
             //this.Controls.Add(tlResource);
@@ -117,12 +117,12 @@ namespace Epoint.Modules.Zalo
 
             tlResource.strZone = "RESOURCEZALO";
             tlResource.BuildTreeList(this.isLookup);
-		}
+        }
 
-		public void FillData()
-		{
+        public void FillData()
+        {
             dtResource = DataTool.SQLGetDataTable("ZALORESOURCES", null, this.strLookupKeyFilter, null);
-                        
+
             bdsResource.DataSource = dtResource;
 
             //Uy quyen cho lop co so tim kiem           
@@ -136,42 +136,42 @@ namespace Epoint.Modules.Zalo
                 this.MoveToLookupValue();
 
             tlResource.Expand = (bool)SQLExec.ExecuteReturnValue("SELECT Expand FROM SYSZONE WHERE ZONE = '" + tlResource.strZone + "'");
-		}
+        }
 
-		private void MoveToLookupValue()
-		{
-			if (this.strLookupColumn == string.Empty || this.strLookupValue == string.Empty)
-				return;
+        private void MoveToLookupValue()
+        {
+            if (this.strLookupColumn == string.Empty || this.strLookupValue == string.Empty)
+                return;
 
-			for (int i = 0; i <= dtResource.Rows.Count - 1; i++)
-				if (((string)dtResource.Rows[i][strLookupColumn]).StartsWith(strLookupValue))
-				{
-					bdsResource.Position = i;
-					break;
-				}
-		}
+            for (int i = 0; i <= dtResource.Rows.Count - 1; i++)
+                if (((string)dtResource.Rows[i][strLookupColumn]).StartsWith(strLookupValue))
+                {
+                    bdsResource.Position = i;
+                    break;
+                }
+        }
 
-		#endregion
+        #endregion
 
-		#region Update
+        #region Update
 
-		public override void Edit(enuEdit enuNew_Edit)
-		{
-			if (bdsResource.Position < 0 && enuNew_Edit == enuEdit.Edit)
-				return;
+        public override void Edit(enuEdit enuNew_Edit)
+        {
+            if (bdsResource.Position < 0 && enuNew_Edit == enuEdit.Edit)
+                return;
 
-			//Copy hang hien tai            
-			if (bdsResource.Position >= 0)
-				Common.CopyDataRow(((DataRowView)bdsResource.Current).Row, ref drCurrent);
-			else
-				drCurrent = dtResource.NewRow();
+            //Copy hang hien tai            
+            if (bdsResource.Position >= 0)
+                Common.CopyDataRow(((DataRowView)bdsResource.Current).Row, ref drCurrent);
+            else
+                drCurrent = dtResource.NewRow();
 
             frmZaloResource_Edit frmEdit = new frmZaloResource_Edit();
-			frmEdit.Load(enuNew_Edit, drCurrent);			
+            frmEdit.Load(enuNew_Edit, drCurrent);
 
-			//Người dùng chọn chấp nhận
-			if (frmEdit.isAccept)
-			{
+            //Người dùng chọn chấp nhận
+            if (frmEdit.isAccept)
+            {
                 //Cập nhật History
                 DataRow drHistory = drCurrent;
                 htHistory["CODE"] = drHistory[strCode];
@@ -180,7 +180,7 @@ namespace Epoint.Modules.Zalo
                 if (enuNew_Edit == enuEdit.New)
                 {
                     htHistory["UPDATE_TYPE"] = "N";
-                    
+
                     Epoint.Lists.frmView frm = new Lists.frmView();
                     frm.UpdateHistory();
                 }
@@ -189,110 +189,110 @@ namespace Epoint.Modules.Zalo
                     htHistory["UPDATE_TYPE"] = "E";
                     htHistory["CODE_OLD"] = ((DataRowView)bdsResource.Current)[strCode];
                     htHistory["NAME_OLD"] = ((DataRowView)bdsResource.Current)[strName];
-                    
+
                     Epoint.Lists.frmView frm = new Lists.frmView();
                     frm.UpdateHistory();
                 }
                 //Cập nhật dữ liệu danh mục
-				if (enuNew_Edit == enuEdit.New)
-				{
-					if (bdsResource.Position >= 0)
-						dtResource.ImportRow(drCurrent);
-					else
-						dtResource.Rows.Add(drCurrent);
+                if (enuNew_Edit == enuEdit.New)
+                {
+                    if (bdsResource.Position >= 0)
+                        dtResource.ImportRow(drCurrent);
+                    else
+                        dtResource.Rows.Add(drCurrent);
 
-					bdsResource.Position = bdsResource.Find("FILE_ID", drCurrent["FILE_ID"]);
-				}
-				else
-					Common.CopyDataRow(drCurrent, ((DataRowView)bdsResource.Current).Row);
-				
-				dtResource.AcceptChanges();
-			}
-			//else
-			//    dtResource.RejectChanges();
-		}
-		
-		public override void Delete()
-		{
-			if (bdsResource.Position < 0)
-				return;
+                    bdsResource.Position = bdsResource.Find("FILE_ID", drCurrent["FILE_ID"]);
+                }
+                else
+                    Common.CopyDataRow(drCurrent, ((DataRowView)bdsResource.Current).Row);
 
-			DataRow drCurrent = ((DataRowView)bdsResource.Current).Row;
+                dtResource.AcceptChanges();
+            }
+            //else
+            //    dtResource.RejectChanges();
+        }
+
+        public override void Delete()
+        {
+            if (bdsResource.Position < 0)
+                return;
+
+            DataRow drCurrent = ((DataRowView)bdsResource.Current).Row;
             if ((Boolean)drCurrent["IsZaloSend"])
             {
                 EpointMessage.MsgOk("Tin đã gửi không thể xóa");
-                    return;
+                return;
             }
 
-            if (Convert.ToInt32(SQLExec.ExecuteReturnValue("SP_HRM_CHECKParent '"+drCurrent["File_ID"].ToString()+"'")) > 0)
+            if (Convert.ToInt32(SQLExec.ExecuteReturnValue("SP_HRM_CHECKParent '" + drCurrent["File_ID"].ToString() + "'")) > 0)
             {
                 EpointMessage.MsgOk("Không thể xóa nhóm cha !");
                 return;
             }
 
-			if( !Common.MsgYes_No( Languages.GetLanguage("SURE_DELETE")))
-				return;
+            if (!Common.MsgYes_No(Languages.GetLanguage("SURE_DELETE")))
+                return;
 
-			if (DataTool.SQLDelete("ZALORESOURCES", drCurrent))
-			{
+            if (DataTool.SQLDelete("ZALORESOURCES", drCurrent))
+            {
                 //Cập nhật History
                 htHistory["CODE"] = drCurrent[strCode];
                 htHistory["NAME"] = drCurrent[strName];
                 htHistory["UPDATE_TYPE"] = "D";
-                
+
                 Epoint.Lists.frmView frm = new Lists.frmView();
                 frm.UpdateHistory();
 
-				bdsResource.RemoveAt(bdsResource.Position);
-				dtResource.AcceptChanges();
-			}
-		}
+                bdsResource.RemoveAt(bdsResource.Position);
+                dtResource.AcceptChanges();
+            }
+        }
 
-		public override void MergeID()
-		{
-            
-		}
+        public override void MergeID()
+        {
 
-		#endregion 
+        }
 
-		#region EnterProcess
+        #endregion
 
-		bool EnterValid()
-		{
-			if (this.strLookupKeyValid == string.Empty || this.strLookupKeyValid == null)
-				return true;
+        #region EnterProcess
 
-			if (bdsResource == null || bdsResource.Position < 0)
-				return false;
+        bool EnterValid()
+        {
+            if (this.strLookupKeyValid == string.Empty || this.strLookupKeyValid == null)
+                return true;
 
-			drCurrent = ((DataRowView)bdsResource.Current).Row;
-			DataTable dtTemp = dtResource.Clone();
-			dtTemp.ImportRow(drCurrent);
+            if (bdsResource == null || bdsResource.Position < 0)
+                return false;
 
-			if ((dtTemp.Select(this.strLookupKeyValid)).Length == 1)
-				return true;
-			else
-				return false;
-		}
+            drCurrent = ((DataRowView)bdsResource.Current).Row;
+            DataTable dtTemp = dtResource.Clone();
+            dtTemp.ImportRow(drCurrent);
 
-		public override void EnterProcess()
-		{
-			if (bdsResource.Position < 0)
-				return;
+            if ((dtTemp.Select(this.strLookupKeyValid)).Length == 1)
+                return true;
+            else
+                return false;
+        }
 
-			if (isLookup && EnterValid())
-			{
-				drLookup = ((DataRowView)bdsResource.Current).Row;
-				this.Close();
-			}
-		}
+        public override void EnterProcess()
+        {
+            if (bdsResource.Position < 0)
+                return;
 
-		#endregion 
+            if (isLookup && EnterValid())
+            {
+                drLookup = ((DataRowView)bdsResource.Current).Row;
+                this.Close();
+            }
+        }
 
-		#region Su kien
+        #endregion
 
-		void tlResource_MouseDoubleClick(object sender, MouseEventArgs e)
-		{
+        #region Su kien
+
+        void tlResource_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
             //if (this.isLookup)
             //    this.EnterProcess();
             //else
@@ -313,9 +313,9 @@ namespace Epoint.Modules.Zalo
                     stream.Close();
                     Process.Start(dialog.FileName);
                 }
-            }           
+            }
 
-		}
+        }
         void tlResource_MouseClick(object sender, MouseEventArgs e)
         {
             //throw new NotImplementedException();
@@ -350,7 +350,7 @@ namespace Epoint.Modules.Zalo
                 this.FillData();
             }
         }
-		#endregion 
+        #endregion
         public override void EpointRelease()
         {
 
@@ -455,7 +455,7 @@ namespace Epoint.Modules.Zalo
                     continue;
                 }
 
-               Follower User = new Follower();
+                Follower User = new Follower();
                 User.id = dynjInfo.data.user_id;
                 User.gender = dynjInfo.data.user_gender;
                 User.name = dynjInfo.data.display_name;
@@ -491,14 +491,14 @@ namespace Epoint.Modules.Zalo
 
             }
 
-           EpointProcessBox.AddMessage("Số lượng người được cập nhật : " + dtEm.Rows.Count.ToString());
+            EpointProcessBox.AddMessage("Số lượng người được cập nhật : " + dtEm.Rows.Count.ToString());
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
-        {            
+        {
             if (e.KeyCode == Keys.F10)
             {
-                ReleaseType = "G";              
+                ReleaseType = "G";
                 EpointProcessBox.Show(this);
                 ReleaseType = string.Empty;
             }
