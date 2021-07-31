@@ -58,7 +58,7 @@ namespace Epoint.Modules.Zalo
             tlResource.MouseClick += new MouseEventHandler(tlResource_MouseClick);
             //cboFile_Type.SelectedValueChanged +=new EventHandler(cboFile_Type_SelectedValueChanged);
             //cboFile_Type.SelectedIndexChanged += new EventHandler(cboFile_Type_SelectedIndexChanged);            
-            string access_token = Element.sysZaloAccessToken;
+            string access_token = ElementHrm.sysZaloAccessToken;
             //ZaloAppInfo info = new ZaloAppInfo(3320005208606942018, "", "http://tuanviet-trading.com/");
             client = new ZaloClient(access_token);
         }

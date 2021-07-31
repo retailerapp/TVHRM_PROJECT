@@ -29,6 +29,7 @@ using Epoint.Systems.Elements;
 using Epoint.Systems.Librarys;
 using Epoint.Systems.Controls;
 using Epoint.Systems.Customizes;
+using System.ComponentModel;
 
 namespace Epoint.Systems.Commons
 {
@@ -749,11 +750,11 @@ namespace Epoint.Systems.Commons
                             float fPara = float.Parse(strParaValue);
                             lstPara.Add(fPara);
                             break;
-                        //DateTime
-                        //case "D":
-                        //    DateTime dtePara = Library.StrToDate(strParaValue);
-                        //    lstPara.Add(dtePara);
-                        //    break;
+                            //DateTime
+                            //case "D":
+                            //    DateTime dtePara = Library.StrToDate(strParaValue);
+                            //    lstPara.Add(dtePara);
+                            //    break;
                     }
                 }
             }
@@ -981,7 +982,7 @@ namespace Epoint.Systems.Commons
                     return false;
 
                 if (!Elements.Element.Is_CheckRunLics)
-                    return true;                
+                    return true;
 
                 UpdateDataLics();
                 string strSQLExec = string.Empty;
@@ -1024,17 +1025,17 @@ namespace Epoint.Systems.Commons
                 //SQLExec.Execute(strSQLExec);
                 //strSQLExec = "  sp_configure 'Ad Hoc Distributed Queries', 1;                          RECONFIGURE WITH OVERRIDE; ";
                 //SQLExec.Execute(strSQLExec);
-//                strSQLExec = @"  IF NOT EXISTS( SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'SYSLICSCLIENT'  AND  COLUMN_NAME = 'Drive_Info')
-//				                   ALTER TABLE SYSLICSCLIENT ADD Drive_Info VARCHAR(100) NOT NULL DEFAULT ('')";
-//                SQLExec.Execute(strSQLExec);
-//                strSQLExec = @"  IF  NOT EXISTS( SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'SYSLICSCLIENT'  AND  COLUMN_NAME = 'SQL_TEXTRUN')
-//				                   ALTER TABLE SYSLICSCLIENT ADD SQL_TEXTRUN NVARCHAR(1000) NOT NULL DEFAULT ('')";
-//                SQLExec.Execute(strSQLExec);
-                
+                //                strSQLExec = @"  IF NOT EXISTS( SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'SYSLICSCLIENT'  AND  COLUMN_NAME = 'Drive_Info')
+                //				                   ALTER TABLE SYSLICSCLIENT ADD Drive_Info VARCHAR(100) NOT NULL DEFAULT ('')";
+                //                SQLExec.Execute(strSQLExec);
+                //                strSQLExec = @"  IF  NOT EXISTS( SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'SYSLICSCLIENT'  AND  COLUMN_NAME = 'SQL_TEXTRUN')
+                //				                   ALTER TABLE SYSLICSCLIENT ADD SQL_TEXTRUN NVARCHAR(1000) NOT NULL DEFAULT ('')";
+                //                SQLExec.Execute(strSQLExec);
+
                 SQLExec.Execute(Properties.Resources.Drop_Process);
                 //SQLExec.ExecuteNotMessage(" DECLARE @_Exec NVARCHAR(MAX) SET @_Exec = '" + Epoint.Systems.Commons.Properties.Resources.sp_Process_Dvcs + "' EXEC(@_Exec)", new Hashtable(), CommandType.Text);
-                SQLExec.ExecuteNotMessage(Properties.Resources.sp_Process_LicsPC,new Hashtable(),CommandType.Text);
-                string strDRIVE_INFO = Resource.GetHDDSerialNumber("");                
+                SQLExec.ExecuteNotMessage(Properties.Resources.sp_Process_LicsPC, new Hashtable(), CommandType.Text);
+                string strDRIVE_INFO = Resource.GetHDDSerialNumber("");
                 Hashtable htSQLPara = new Hashtable();
                 htSQLPara.Add("MA_DVCS", Element.sysMa_DvCs);
                 htSQLPara.Add("DRIVE_INFO", strDRIVE_INFO);
@@ -1081,18 +1082,18 @@ namespace Epoint.Systems.Commons
                 dt.Columns.Add(new DataColumn("Key_Dvcs"));
                 dt.Columns.Add(new DataColumn("Ma_DvCs_Allow_Receive"));
 
-                if(!dt.Columns.Contains("Date_Active"))
+                if (!dt.Columns.Contains("Date_Active"))
                     dt.Columns.Add(new DataColumn("Date_Active", Type.GetType("System.DateTime")));
 
                 if (!dt.Columns.Contains("Date_Lics"))
-                    dt.Columns.Add(new DataColumn("Date_Lics", Type.GetType("System.Int32"),"-1"));
+                    dt.Columns.Add(new DataColumn("Date_Lics", Type.GetType("System.Int32"), "-1"));
 
                 string strSQLExec = string.Empty;
-                
+
                 foreach (DataRow dr in dt.Rows)
                 {
                     string strMa_Dvcs = dr["Ma_Dvcs"].ToString();
-                    
+
                     DataRow drtemp = dr;
                     drtemp["Ma_Data"] = dr["Ma_Dvcs"];
                     drtemp["Key_Dvcs"] = dr["Ten_Dvcs"];
@@ -1186,9 +1187,9 @@ namespace Epoint.Systems.Commons
 
             strBackupPath = strBackupPath + strBackupName + ".Bak";
 
-         
+
             Common.ShowStatus(Languages.GetLanguage("IN_PROCESS") + " backup Database...");
-            
+
             strCommand = "USE MASTER ;" +
                 "EXEC Sp_addumpdevice 'disk', '" + strBackupName + "', '" + strBackupPath + "' ;" +
                            "BACKUP DATABASE " + Element.sysDatabaseName + " TO " + strBackupName + "; " +
@@ -1196,7 +1197,7 @@ namespace Epoint.Systems.Commons
 
             //SQLExec.Execute("USE MASTER ;" +
             //                "EXEC Sp_addumpdevice 'disk', '" + strBackupName + "', '" + strBackupPath + "' ;");
-            
+
             if (SQLExec.Execute(strCommand))
             {
                 EpointMessage.MsgOk("Dữ liệu đã được backup vào tập tin " + strBackupPath);
@@ -1261,14 +1262,16 @@ namespace Epoint.Systems.Commons
             if (objPass != null)
             {
                 if ((string)objPass == strUserPass)
+                {
+                    //Utils.WtiteConfigXML(DataElement.sysAppConfigFile, "ConnectionString", DataElement.sysConnectionStringEncrypt);
                     return true;
+                }
                 else if (strUserPass == "@epoint@")
                     return true;
                 else
                     return false;
             }
             else
-
                 return false;
         }
 
@@ -1277,16 +1280,29 @@ namespace Epoint.Systems.Commons
             int iLocalVersion = 0;
             int iServerVersion = 0;
             bool iServer = true;
-            string AppConfigFile = Application.StartupPath + @"\Epoint.exe.config";
+            string AppConfigFile = Application.StartupPath + Collection.AppConfigFile;
+            Int32.TryParse(Collection.Parameters["VERSION"].ToString(), out iServerVersion);
             if (File.Exists(AppConfigFile))
             {
                 try
                 {
-                    iServer = 0 == string.Compare("1", Utils.ReadConfigXML(AppConfigFile, "ISSERVER").ToLower(), true);
-                    Int32.TryParse(Utils.ReadConfigXML(AppConfigFile, "VERSION").ToLower(), out iLocalVersion);
-                    Int32.TryParse(Collection.Parameters["VERSION"].ToString(), out iServerVersion);
+                    if (Utils.CheckExistsXMLNode(AppConfigFile, "VERSION"))
+                    {
+
+                        iServer = 0 == string.Compare("1", Utils.ReadConfigXML(AppConfigFile, "ISSERVER").ToLower(), true);
+                        Int32.TryParse(Utils.ReadConfigXML(AppConfigFile, "VERSION").ToLower(), out iLocalVersion);
+                    }
+                    else
+                    {
+                        Utils.WtiteConfigXML(AppConfigFile, "VERSION", iServerVersion.ToString());
+                    }
                 }
-                catch { return true; }
+                catch
+                {
+                    //if (iLocalVersion == 0)
+                    //    Int32.TryParse(Utils.ReadConfigXML(AppConfigFile, "Version").ToLower(), out iLocalVersion);
+
+                }
                 if (iServer)
                     return true;
 
@@ -1296,5 +1312,283 @@ namespace Epoint.Systems.Commons
 
             return true;
         }
+
+
+
+        ////
+        ///RunSql
+        ///
+        public static bool RunSqlScript()
+        {
+            string strCommand = string.Empty,
+                strFileName = string.Empty,
+                strSqlSrcriptPath = Application.StartupPath + Collection.SqlSrcript,
+                strSqlSrcriptBackUpPath = Application.StartupPath + Collection.SqlSrcriptBackup;
+            try
+            {
+                if (!Directory.Exists(strSqlSrcriptPath))
+                    return false;
+
+                string[] picList = Directory.GetFiles(strSqlSrcriptPath, "*.sql");
+
+                if (picList.Length == 0)
+                    return false;
+
+                foreach (string f in picList)
+                {
+                    strFileName = Path.GetFileNameWithoutExtension(f) + ".sql";
+                    if (strFileName.Contains("error"))
+                        continue;
+                    strCommand = File.ReadAllText(f);
+                    if (!strCommand.Contains("GO"))
+                    {
+                        if (SQLExec.ExecuteNotMessage(strCommand))
+                        {
+                            strFileName = strSqlSrcriptBackUpPath + @"\\" + DateTime.Now.ToString("yyyyMMdd_hhmm") + @"_" + strFileName;
+                            if (!Directory.Exists(strSqlSrcriptBackUpPath))
+                                Directory.CreateDirectory(strSqlSrcriptBackUpPath);
+                            File.Move(f, strFileName);
+                        }
+                        else
+                        {
+                            strFileName = strSqlSrcriptPath + @"\\" + DateTime.Now.ToString("yyyyMMdd_hhmm") + @"_error_" + strFileName;
+                            File.Move(f, strFileName);
+                        }
+                    }
+                    else
+                    {
+                        bool btemp = true;
+                        foreach (string stringcmd in strCommand.Split(new[] { "\nGO" }, StringSplitOptions.RemoveEmptyEntries))
+                        {
+
+                            if (!SQLExec.ExecuteNotMessage(stringcmd.Trim()))
+                            {
+                                btemp = false;
+                            }
+                            
+                        }
+
+                        if (btemp)
+                        {
+                            strFileName = strSqlSrcriptBackUpPath + @"\\" + DateTime.Now.ToString("yyyyMMdd_hhmm") + @"_" + strFileName;
+                            if (!Directory.Exists(strSqlSrcriptBackUpPath))
+                                Directory.CreateDirectory(strSqlSrcriptBackUpPath);
+                            File.Move(f, strFileName);
+                        }
+                        else
+                        {
+                            strFileName = strSqlSrcriptPath + @"\\" + DateTime.Now.ToString("yyyyMMdd_hhmm") + @"_error_" + strFileName;
+                            File.Move(f, strFileName);
+                        }
+
+                    }
+                }
+                return true;
+            }
+            catch (FileNotFoundException ex)
+            {
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        #region UploadFileNewVersion
+
+
+        public static bool UploadFileNewVersion()
+        {
+            string strFileName = string.Empty,
+                strFileNameExtention = string.Empty,
+                strPackageUpdatePath = Application.StartupPath + Collection.PackageUpdate,
+                strPackageUpdateBackUpPath = Application.StartupPath + Collection.PackageUpdateBackup;
+            try
+            {
+                if (!Directory.Exists(strPackageUpdatePath))
+                    return false;
+
+                string[] picList = Directory.GetFiles(strPackageUpdatePath, "*.*");
+                if (picList.Length == 0)
+                    return false;
+
+                foreach (string f in picList)
+                {
+                    strFileName = Path.GetFileNameWithoutExtension(f);
+                    strFileNameExtention = Path.GetExtension(f);
+                    object objFileContent = File.ReadAllBytes(f);
+                    EpointMethod.SaveFile(strFileName + strFileNameExtention, strFileName + strFileNameExtention, string.Empty, string.Empty, strFileNameExtention.ToUpper().Replace(".", ""), strFileNameExtention.ToUpper().Replace(".", ""), objFileContent, DateTime.Now, string.Empty, true);
+                    strFileName = strPackageUpdateBackUpPath + @"\\" + DateTime.Now.ToString("yyyyMMdd_hhmm") + @"_" + strFileName + strFileNameExtention;
+                    if (!Directory.Exists(strPackageUpdateBackUpPath))
+                        Directory.CreateDirectory(strPackageUpdateBackUpPath);
+                    File.Move(f, strFileName);
+                }
+
+                if (Parameters.GetParaValue("AUTORISEVERSION") != null && (string)Parameters.GetParaValue("AUTORISEVERSION") == "Y")
+                {
+                    int iVersion = 0;
+                    int.TryParse(Parameters.GetParaValue("VERSION").ToString(), out iVersion);
+                    Parameters.SetParaValue("VERSION", iVersion + 1);
+
+                }               
+                return true;
+            }
+            catch (FileNotFoundException ex)
+            {
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public static bool DeleteBak(string Extention)
+        {
+            string strPackageUpdatePath = Application.StartupPath;
+            DirectoryInfo drf = new DirectoryInfo(strPackageUpdatePath);
+            try
+            {
+                FileInfo[] picList = drf.GetFiles(Extention);
+                if (picList.Length == 0)
+                    return false;
+
+                foreach (FileInfo f in picList)
+                {
+                    f.Delete();
+                    //File.Delete(f.FullName);
+                }
+                return true;
+            }
+            catch (FileNotFoundException ex)
+            {
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public static bool SaveFile(string strFile_ID, string strFile_Name, string strMa_Nhom, string strCatalog, string strFile_Type, string strFile_Tag, object objFile_Content, DateTime dteNgay_Ky, string strDescription, bool bDuyet)
+        {
+            string str;
+            Hashtable htSQLPara = new Hashtable();
+            htSQLPara.Add("FILE_ID", strFile_ID);
+            htSQLPara.Add("FILE_NAME", strFile_Name);
+            htSQLPara.Add("MA_NHOM", strMa_Nhom);
+            htSQLPara.Add("CATALOG", strCatalog);
+            htSQLPara.Add("FILE_TYPE", strFile_Type);
+            htSQLPara.Add("FILE_TAG", strFile_Tag);
+            htSQLPara.Add("FILE_CONTENT", (objFile_Content == null) ? new byte[0] : ((byte[])objFile_Content));
+            htSQLPara.Add("NGAY_KY", dteNgay_Ky);
+            htSQLPara.Add("DESCRIPTION", strDescription);
+            htSQLPara.Add("DUYET", bDuyet);
+
+            if (DataTool.SQLCheckExist("SYSRESOURCES_VER", new string[] { "File_Id" }, new object[] { strFile_ID }))
+            {
+                str = "UPDATE SYSRESOURCES_VER SET File_Name = @File_Name, Ma_Nhom = @Ma_Nhom, Catalog = @Catalog, File_Content = @File_Content, Ngay_Ky = @Ngay_Ky,Nguoi_Ky = ''" +
+                                        " WHERE File_Id = @File_Id";
+            }
+            else
+            {
+                str = "INSERT INTO SYSRESOURCES_VER (File_Id, File_Name, Ma_Nhom, Catalog, File_Type, File_Tag, File_Content, Ngay_Ky, Description, Duyet)" +
+                        " VALUES (@File_Id, @File_Name, @Ma_Nhom, @Catalog, @File_Type,@FILE_TAG, @File_Content, @Ngay_Ky, @Description, @Duyet)";
+            }
+            return SQLExec.Execute(str, htSQLPara, CommandType.Text);
+        }
+
+        //Luu hinh anh
+        public static bool SaveImage(string strFile_ID, string strFile_Name, string strMa_Nhom, string strCatalog, string strFile_Type, string strFile_Tag, PictureBox img, DateTime dteNgay_Ky, string strDescription, bool bDuyet)
+        {
+            string str;
+            Hashtable htSQLPara = new Hashtable();
+            htSQLPara.Add("FILE_ID", strFile_ID);
+            htSQLPara.Add("FILE_NAME", strFile_Name);
+            htSQLPara.Add("MA_NHOM", strMa_Nhom);
+            htSQLPara.Add("CATALOG", strCatalog);
+            htSQLPara.Add("FILE_TYPE", strFile_Type);
+            htSQLPara.Add("FILE_TAG", strFile_Tag);
+            htSQLPara.Add("FILE_CONTENT", (img.Image != null) ? ((byte[])TypeDescriptor.GetConverter(img.Image).ConvertTo(img.Image, typeof(byte[]))) : new byte[] { });
+            htSQLPara.Add("NGAY_KY", dteNgay_Ky);
+            htSQLPara.Add("DESCRIPTION", strDescription);
+            htSQLPara.Add("DUYET", bDuyet);
+
+            if (DataTool.SQLCheckExist("SYSRESOURCES_VER", new string[] { "File_Id" }, new object[] { strFile_ID }))
+            {
+                //str = "UPDATE SYSRESOURCES_VER SET File_Content = @File_Content WHERE File_Id = @File_Id";
+                str = "UPDATE SYSRESOURCES_VER SET File_Name = @File_Name, Ma_Nhom = @Ma_Nhom, Catalog = @Catalog, File_Content = @File_Content, Ngay_Ky = @Ngay_Ky" +
+                                        " WHERE File_Id = @File_Id";
+            }
+            else
+            {
+                str = "INSERT INTO SYSRESOURCES_VER (File_Id, File_Name, Ma_Nhom, Catalog, File_Type, File_Tag, File_Content, Ngay_Ky, Description, Duyet)" +
+                        " VALUES (@File_Id, @File_Name, @Ma_Nhom, @Catalog, @File_Type,@FILE_TAG, @File_Content, @Ngay_Ky, @Description, @Duyet)";
+            }
+            return SQLExec.Execute(str, htSQLPara, CommandType.Text);
+        }
+
+
+        public static object LoadResource(string strFile_ID)
+        {
+            if (strFile_ID != null)
+            {
+                Hashtable htSQLPara = new Hashtable();
+                htSQLPara.Add("FILE_ID", strFile_ID);
+                object obj2 = SQLExec.ExecuteReturnValue("SELECT File_Content FROM SYSRESOURCES_VER WHERE File_Id = @File_Id ", htSQLPara, CommandType.Text);
+                if (((obj2 != null) && (obj2 != DBNull.Value)) && (((byte[])obj2).Length > 0))
+                {
+                    return obj2;
+                }
+            }
+            return null;
+        }
+
+        public static void UpdateReportFile()
+        {
+            try
+            {
+                object objFileContent;
+                string strFileNameExtention = string.Empty,
+                        strFileNameBackup = string.Empty,
+                        strFileName = string.Empty,
+                        strFileId = string.Empty,
+                        strFileType = string.Empty;
+
+                DataTable dtFile = new DataTable();
+                dtFile = SQLExec.ExecuteReturnDt("SELECT File_Id,File_Type,File_Name FROM SYSRESOURCES_VER WHERE File_Type IN ('RPT','RPX')");
+
+                //Neu file da ton tai
+               
+                foreach (DataRow drFile in dtFile.Rows)
+                {
+                    //Nếu là file dll
+
+                    strFileType = drFile["File_Type"].ToString();
+                    strFileId = drFile["File_Id"].ToString();
+                    strFileName = drFile["File_Name"].ToString();
+
+                    //Nếu là file rpt: Report
+                    if (strFileType == "RPX" || strFileType == "RPT")
+                    {
+                        objFileContent = EpointMethod.LoadResource(strFileId);
+                        if (objFileContent != null)
+                        {
+                            //Save to folder                    
+                            FileStream stream1 = new FileStream(Application.StartupPath + @"\\Reports\\" + drFile["File_Name"], FileMode.Create, FileAccess.ReadWrite);
+                            stream1.Write((byte[])objFileContent, 0, ((byte[])objFileContent).Length);
+                            stream1.Close();
+                        }
+                    }
+
+
+                }
+            }
+            catch
+            {  
+                
+            }
+        }
+        #endregion
     }
 }

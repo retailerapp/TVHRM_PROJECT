@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Collection.cs" />
     <Compile Include="ColorTable.cs" />
+    <Compile Include="ElementHrm.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="License.cs">
       <SubType>Code</SubType>

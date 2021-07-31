@@ -24,6 +24,23 @@ namespace Epoint.Systems.Elements
         public static Dictionary<string, Form> Working_Module_Form = new Dictionary<string, Form>();
 
         public static Dictionary<string, object> Parameters = new Dictionary<string, object>();
+
+        public const string DecryptConnectionString = "qwertyuiopasdfghjklzxcvbnm";
+
+        public const string DecryptEpointString = "Epoint@@software";
+
+        public const string AppConfigFile = @"\Epoint.exe.config";
+
+        public const string LiveUpdateFile = @"\\LiveUpdate.exe";
+
+        public const string SqlSrcript = @"\\SQLScript";
+
+        public const string SqlSrcriptBackup = @"\\SQLScript\\Backup";
+
+        public const string PackageUpdate = @"\\PackageUpdate";
+
+        public const string PackageUpdateBackup = @"\\PackageUpdate\\Backup";
+
     }
 
     public static class Core
@@ -45,77 +62,53 @@ namespace Epoint.Systems.Elements
             }
             return strTen_Dvcs;
         }
-        public static string ConnectionStringUpdate()
-        {
-            //return License.ConnectingSring();
-            //string strfile = Application.StartupPath + "\\EpointConfig.epoint";
-            string strfile = Application.StartupPath + "\\" + Element.sysConfigFileUpdate;
-            if (!File.Exists(strfile))
-                MessageBox.Show("Config database error!");
-            using (StreamReader sr = new StreamReader(strfile))
-            {
-                string strConnect = sr.ReadToEnd();
-                //return strConnect;
-                try
-                {
-                    return License.DecryptString(strConnect, "qwertyuiopasdfghjklzxcvbnm");
-                }
-                catch
-                {
-                    MessageBox.Show("Config database error!");
-                    return string.Empty;
-                }
-            }
-        }
         public static string ConnectionString()
         {
             //return License.ConnectingSring();
             //string strfile = Application.StartupPath + "\\EpointConfig.epoint";
+            string strConnection = string.Empty;
             string strfile = Application.StartupPath + "\\" + Element.sysConfigFile;
             if (!File.Exists(strfile))
-                MessageBox.Show("Config file not exist:\n" + strfile);
+                MessageBox.Show("File config doesn't exist!");
             using (StreamReader sr = new StreamReader(strfile))
             {
                 string strConnect = sr.ReadToEnd();
-                //return strConnect;
                 try
                 {
-                    return License.DecryptString(strConnect, "qwertyuiopasdfghjklzxcvbnm");
+                    strConnection = License.DecryptString(strConnect, Collection.DecryptConnectionString);
+                    DataTool.sysConnectionString = strConnection;
+                    DataElement.sysConnectionString = strConnection;
+                    DataElement.sysConnectionStringEncrypt = strConnect;
+                    return strConnection;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show("Config database error!\n" + ex.Message);
+                    MessageBox.Show("Config database error!");
+                    Application.Exit();
                     return string.Empty;
                 }
             }
         }
-        public static string ConnectionString(string strConnect)
+        public static string ConnectionString(string strConnectionString)
         {
-            string strfile = string.Empty;
-            if (strConnect == string.Empty)
-            {
-                strfile = Application.StartupPath + "\\" + Element.sysConfigFile;
-                if (!File.Exists(strfile))
-                    throw new Exception("Config file not exist:\n" + strfile);
-                using (StreamReader sr = new StreamReader(strfile))
-                {
-                    strConnect = sr.ReadToEnd();
-                }
-            }
+            string strConnection = string.Empty;
             try
             {
-                return License.DecryptString(strConnect, "qwertyuiopasdfghjklzxcvbnm");
+                strConnection = License.DecryptString(strConnectionString, Collection.DecryptConnectionString);
+                DataTool.sysConnectionString = strConnection;
+                DataElement.sysConnectionString = strConnection;
+                DataElement.sysConnectionStringEncrypt = strConnectionString;
+                return strConnection;
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception("Config database error!\n" + ex.Message);
+                MessageBox.Show("Config database error!");
+                return string.Empty;
             }
-           
         }
         public static string ConnectionStringSync1()
         {
-            //return License.ConnectingSring();
-            //string strfile = Application.StartupPath + "\\EpointConfig.epoint";
+
             string strfile = Application.StartupPath + "\\" + Element.sysConfigFile;
             if (!File.Exists(strfile))
                 MessageBox.Show("Config database error!");
@@ -125,7 +118,7 @@ namespace Epoint.Systems.Elements
                 //return strConnect;
                 try
                 {
-                    return License.DecryptString(strConnect, "qwertyuiopasdfghjklzxcvbnm");
+                    return License.DecryptString(strConnect, Collection.DecryptConnectionString);
                 }
                 catch
                 {
@@ -136,8 +129,7 @@ namespace Epoint.Systems.Elements
         }
         public static string ConnectionStringSync2()
         {
-            //return License.ConnectingSring();
-            //string strfile = Application.StartupPath + "\\EpointConfig.epoint";
+
             string strfile = Application.StartupPath + "\\" + Element.sysConfigFile;
             if (!File.Exists(strfile))
                 MessageBox.Show("Config database error!");
@@ -147,7 +139,7 @@ namespace Epoint.Systems.Elements
                 //return strConnect;
                 try
                 {
-                    return License.DecryptString(strConnect, "qwertyuiopasdfghjklzxcvbnm");
+                    return License.DecryptString(strConnect, Collection.DecryptConnectionString);
                 }
                 catch
                 {
@@ -156,11 +148,27 @@ namespace Epoint.Systems.Elements
                 }
             }
         }
-        //public static string ConnectionStringServer()
-        //{
-        //    return License.ConnectingSringServer();
-        //}
+        public static string ConnectionStringUpdate()
+        {
 
+            string strfile = Application.StartupPath + "\\" + Element.sysConfigFileUpdate;
+            if (!File.Exists(strfile))
+            {
+                return Core.ConnectionString();
+            }
+            using (StreamReader sr = new StreamReader(strfile))
+            {
+                string strConnect = sr.ReadToEnd();
+                try
+                {
+                    return License.DecryptString(strConnect, Collection.DecryptConnectionString);
+                }
+                catch
+                {
+                    return Core.ConnectionString();
+                }
+            }
+        }
         public static bool Is_Valid(string strMa_Dvi)
         {
             bool bIs_Valid = false;
@@ -184,25 +192,22 @@ namespace Epoint.Systems.Elements
 
             if (dtDmDvCs.Rows.Count > 0)
             {
-                strKey_Lics = dtDmDvCs.Rows[0]["Key_Log"].ToString();               
-                
+                strKey_Lics = dtDmDvCs.Rows[0]["Key_Log"].ToString();
+
                 if (dtDmDvCs.Columns.Contains("Date_Lics"))
                 {
-                    strKey = strMa_DvCs + dtDmDvCs.Rows[0]["Key_DVCS"].ToString() + dtDmDvCs.Rows[0]["Key_Module"].ToString() + ":"+dtDmDvCs.Rows[0]["Date_Lics"].ToString();
+                    strKey = strMa_DvCs + dtDmDvCs.Rows[0]["Key_DVCS"].ToString() + dtDmDvCs.Rows[0]["Key_Module"].ToString() + ":" + dtDmDvCs.Rows[0]["Date_Lics"].ToString();
                 }
                 else
                 {
                     strKey = strMa_DvCs + dtDmDvCs.Rows[0]["Key_DVCS"].ToString() + dtDmDvCs.Rows[0]["Key_Module"].ToString() + ":-1";
-                    
+
                 }
-                
+
                 strKey_log = License.Encrypt(License.Encrypt(strKey));
 
                 if (strKey_log == strKey_Lics)
                 {
-                    //Kiem tra tren server
-                    //bool bActive = Convert.ToBoolean(dtDmDvCs.Rows[0]["Active"].ToString());
-                    //if (bActive)
                     return true;
                 }
 
@@ -212,16 +217,16 @@ namespace Epoint.Systems.Elements
 
         public static string Encrypt(string strText)
         {
-            return License.EncryptString(strText, "Epoint@@software");
+            return License.EncryptString(strText, Collection.DecryptEpointString);
         }
         public static string Decrypt(string strText)
         {
-            return License.DecryptString(strText, "Epoint@@software");
+            return License.DecryptString(strText, Collection.DecryptEpointString);
         }
 
-       // public int UpdateserverLicence(string Ma_Dvcs, string BranchID, string Key_Log, string Key_Module, string PC_Name)
-       //{
-       //    return License.License.UpdateserverLicence(Ma_Dvcs, BranchID, Key_Log, Key_Module, PC_Name);
-       // }
+        // public int UpdateserverLicence(string Ma_Dvcs, string BranchID, string Key_Log, string Key_Module, string PC_Name)
+        //{
+        //    return License.License.UpdateserverLicence(Ma_Dvcs, BranchID, Key_Log, Key_Module, PC_Name);
+        // }
     }
 }

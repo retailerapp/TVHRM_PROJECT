@@ -805,20 +805,27 @@ namespace Epoint.Systems.Commons
 			//string strEpointFile = Application.StartupPath + @"\Epoint.txt";
 
 
-			string AppConfigFile = Application.StartupPath + @"\Epoint.exe.config";
-			string ApplicationPATH = Utils.ReadConfigXML(AppConfigFile, "ApplicationPATH");
-			Element.sysConfigFile = Utils.ReadConfigXML(AppConfigFile, "ConfigFile").ToLower();
-			Element.sysConfigFileUpdate = Utils.ReadConfigXML(AppConfigFile, "ConfigFileUpdate").ToLower();
-			Element.Is_Server = 0 == string.Compare("1", Utils.ReadConfigXML(AppConfigFile, "ISSERVER").ToLower(), true);
+			DataElement.sysAppConfigFile = Application.StartupPath + Collection.AppConfigFile;
+			string ApplicationPATH = Utils.ReadConfigXML(DataElement.sysAppConfigFile, "ApplicationPATH");
+			string ConnectionString = Utils.ReadConfigXML(DataElement.sysAppConfigFile, "ConnectionString");
+			Element.sysConfigFile = Utils.ReadConfigXML(DataElement.sysAppConfigFile, "ConfigFile").ToLower();
+			Element.sysConfigFileUpdate = Utils.ReadConfigXML(DataElement.sysAppConfigFile, "ConfigFileUpdate").ToLower();
+			Element.Is_Server = 0 == string.Compare("1", Utils.ReadConfigXML(DataElement.sysAppConfigFile, "ISSERVER").ToLower(), true);
 
 			if (Element.Is_Server)
 				Element.sysREPORTPATH = Application.StartupPath + @"\Reports\";
 			else
 				Element.sysREPORTPATH = ApplicationPATH + @"\Reports\";
 
-			Element.sysConnection.ConnectionString = Elements.Core.ConnectionString();
+			if (ConnectionString == null || ConnectionString == String.Empty)
+			{
+				DataElement.sysConnection.ConnectionString = Elements.Core.ConnectionString();
+			}
+			else
+				DataElement.sysConnection.ConnectionString = Elements.Core.ConnectionString(ConnectionString);
 			Element.Is_Running = true;
 			Element.Is_CheckRunLics = true;
+			Element.sysConnection.ConnectionString = DataElement.sysConnection.ConnectionString;
 		}
 
 		public static void InitSystem()
@@ -957,11 +964,11 @@ namespace Epoint.Systems.Commons
             DataTable dtZaloInfo = SQLExec.ExecuteReturnDt("EXEC SP_Zalo_GetInfo");
             if (dtZaloInfo.Rows.Count>0)
             {
-                Element.sysZaloCodeID = dtZaloInfo.Rows[0]["Code"].ToString();
-                Element.sysZaloOfficialID = dtZaloInfo.Rows[0]["OfficialID"].ToString();
-                Element.sysZaloSeccretKey = dtZaloInfo.Rows[0]["SeccretKey"].ToString();
-                Element.sysZaloAccessToken = dtZaloInfo.Rows[0]["AccessToken"].ToString();
-                Element.sysLinkInfo = dtZaloInfo.Rows[0]["LinkInfo"].ToString();
+                ElementHrm.sysZaloCodeID = dtZaloInfo.Rows[0]["Code"].ToString();
+				ElementHrm.sysZaloOfficialID = dtZaloInfo.Rows[0]["OfficialID"].ToString();
+				ElementHrm.sysZaloSeccretKey = dtZaloInfo.Rows[0]["SeccretKey"].ToString();
+				ElementHrm.sysZaloAccessToken = dtZaloInfo.Rows[0]["AccessToken"].ToString();
+				ElementHrm.sysLinkInfo = dtZaloInfo.Rows[0]["LinkInfo"].ToString();
             }
 
 			//Kiểm tra xem có hợp lệ không

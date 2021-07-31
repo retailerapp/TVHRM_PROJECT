@@ -58,7 +58,17 @@ namespace Epoint.Systems.Commons
                 File.Delete(cfile);
             File.Move(str, cfile);
         }
-
+        public static bool CheckExistsXMLNode(string cfile, string inkey)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(cfile);
+            XmlNode newChild = xmlDocument.SelectSingleNode("/configuration/appSettings/add[@key='" + inkey + "']");
+            if (newChild == null)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public static int ParseInt32(object strNumber, int _default)
         {

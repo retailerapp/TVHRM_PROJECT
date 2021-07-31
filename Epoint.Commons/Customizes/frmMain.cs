@@ -36,6 +36,7 @@ namespace Epoint.Systems.Customizes
         public TsmiWindowManagement tsmiWindowManagement;
         public ucCustomerInfo ucCustomer;
         public UcModuleManagement ucModuleManagement;
+        public MainChart mainchart;
         private int UcModuleHeight = 0;
         Point pUcModule = new Point(0, 0);
         
@@ -194,7 +195,7 @@ namespace Epoint.Systems.Customizes
             tbTabPageControl tbTabPageMain = new tbTabPageControl();
             tbTabPageMain.Tag = "MAIN";
 
-            pnImage = new pnlControl();
+            //this.pnImage = new pnlControl();
             //if (Element.sysLanguage == enuLanguageType.Vietnamese)
             //    pnImage.BackgroundImage = Commons.Properties.Resources.Background_V;
             //else
@@ -226,9 +227,21 @@ namespace Epoint.Systems.Customizes
             }
             pnImage.BackgroundImageLayout = ImageLayout.Stretch;
             pnImage.Dock = DockStyle.Fill;
+            //Add chart on the main 
+            #region Chart
+            bool bloadChart = DataTool.SQLCheckExist("sys.procedures", "Name", "SYS_LoadMainChart");
+            if (bloadChart) //Collection.Parameters.ContainsKey("MAINCHART")
+            {
+                DataSet dsChart = SQLExec.ExecuteReturnDs("SYS_LoadMainChart @Ma_Dvcs ='" + Element.sysMa_DvCs + "',@Nam = " + Element.sysWorkingYear.ToString() + "");
+                //DataSet dsChart = SQLExec.ExecuteReturnDs("SYS_LoadMainChart");
+                this.mainchart= new MainChart();
+                mainchart.LoadChart(dsChart);
+                mainchart.Dock = DockStyle.Fill;
+                this.pnImage.Controls.Add(mainchart);
+            }
+            #endregion
 
 
-           
             this.tbTabMain.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
                         | AnchorStyles.Left)
                         | AnchorStyles.Right)));

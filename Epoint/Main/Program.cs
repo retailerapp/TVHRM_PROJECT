@@ -20,11 +20,18 @@ namespace Epoint
             try
             {
                 Common.SetEnvironment();
+                EpointMethod.RunSqlScript();
+                EpointMethod.DeleteBak("*.bak");
+                EpointMethod.DeleteBak("*.pdb");
+
 
                 if (!Login())
                     return;
 
-                Common.InitSystem();                
+                Common.InitSystem();
+                EpointMethod.UploadFileNewVersion();
+
+                EpointMethod.UpdateReportFile();
 
                 if (!EpointMethod.CheckdataLics())
                 {
@@ -45,29 +52,20 @@ namespace Epoint
 
         private static bool Login()
         {
-            if (false)
-            {
-                frmLogin frmLog = new frmLogin();
-                frmLog.TopMost = true;
-                frmLog.ShowDialog();
+            frmLogin_New frmLog = new frmLogin_New();
+            frmLog.TopMost = true;
+            frmLog.ShowDialog();
 
-                if (!frmLog.isAccept)
-                {
-                    Application.Exit();
-                    Application.ExitThread();
-
-                    return false;
-                }
-                Element.sysUser_Id = frmLog.strUserId;
-                return true;
-            }
-            else
+            if (!frmLog.isAccept)
             {
-                Element.sysUser_Id = "ADMIN";
-                return true;
+                Application.Exit();
+                Application.ExitThread();               
+                return false;
             }
-            
-            
+
+            Element.sysUser_Id = frmLog.strUserId;
+
+            return true;
         }
     }
 }
