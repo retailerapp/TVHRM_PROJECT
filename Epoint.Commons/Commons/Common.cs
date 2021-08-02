@@ -939,7 +939,7 @@ namespace Epoint.Systems.Commons
 				Element.sysWorkingYear = System.DateTime.Now.Year;
 				Element.sysTh_Bd_Ht = 1;
 			}
-
+			Common.SetDataForDataTool();
 			//Các thông số còn lại
 			Element.sysIs_Admin = (bool)DataTool.SQLGetDataRowByID("SYSMember", "Member_ID", Element.sysUser_Id)["Is_Admin"];
 
@@ -1036,6 +1036,22 @@ namespace Epoint.Systems.Commons
 			}
 			catch { }
 		}
+		private static void SetDataForDataTool()
+		{
+			DataTool.sysMa_DvCs = Element.sysMa_DvCs;
+			DataTool.sysMa_Data = Element.sysMa_Data;
+			DataTool.sysIs_Admin = Element.sysIs_Admin;
+			DataTool.sysTong_Hop = Element.sysTong_Hop;
+			DataTool.sysWorkingYear = Element.sysWorkingYear;
+			DataTool.sysUser_Id = Element.sysUser_Id;
+
+			DataElement.sysMa_DvCs = Element.sysMa_DvCs;
+			DataElement.sysMa_Data = Element.sysMa_Data;
+			DataElement.sysIs_Admin = Element.sysIs_Admin;
+			DataElement.sysTong_Hop = Element.sysTong_Hop;
+			DataElement.sysWorkingYear = Element.sysWorkingYear;
+			DataElement.sysUser_Id = Element.sysUser_Id;
+		}
 		public static void SetSysMa_DvCs(string strMa_DvCs)
 		{
 			DataTable dtDmDvCs = SQLExec.ExecuteReturnDt("SELECT * FROM SYSDmDvCs (NOLOCK)  WHERE Ma_DvCs = '" + strMa_DvCs + "'");
@@ -1072,7 +1088,7 @@ namespace Epoint.Systems.Commons
 			else
 				((frmMain)Element.frmMain).ssMain.tsbtYear.Text = DateTime.Now.Year.ToString().Trim();
 
-
+			Common.SetDataForDataTool();
 
 		}
 
