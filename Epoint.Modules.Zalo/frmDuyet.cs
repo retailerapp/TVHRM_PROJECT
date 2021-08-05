@@ -72,7 +72,7 @@ namespace Epoint.Modules.Zalo
 				htPara.Add("DUYET_LOG", txtDuyet_Log.Text);
                 htPara.Add("IDENT00", drEdit["Ident00"]);
 
-                strSQLExec = "UPDATE ZALORESOURCES SET Duyet = @Duyet, Nguoi_Ky = @Duyet_Log,Ngay_Ky = @Ngay_Ky  WHERE Ident00 = @Ident00";
+                strSQLExec = "UPDATE ZALORESOURCES SET  Nguoi_Ky = @Duyet_Log,Ngay_Ky = @Ngay_Ky  WHERE Ident00 = @Ident00";
                                 
 				if (SQLExec.Execute(strSQLExec, htPara, CommandType.Text))
 				{
