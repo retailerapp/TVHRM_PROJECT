@@ -47,7 +47,7 @@ namespace Epoint.Modules.HRM
 		}
         private void LoadCbo()
 		{
-            DataTable dtDmHD = SQLExec.ExecuteReturnDt("SP_HRM_GetDataCombobox 'HOPDONGPL'");
+            DataTable dtDmHD = SQLExec.ExecuteReturnDt("SP_HRM_GetDataCombobox 'PLHOPDONGTYPE'");
             //dtDmBp.Rows.Add(new string[] { "*", "Tất cả" });
 
             cboFile_Id.lstItem.BuildListView("Code:200,Label:250");

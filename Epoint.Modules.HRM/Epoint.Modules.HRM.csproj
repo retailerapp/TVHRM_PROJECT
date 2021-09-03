@@ -295,6 +295,12 @@
     <Compile Include="Human\frmDaoTaoKH_Edit.designer.cs">
       <DependentUpon>frmDaoTaoKH_Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Human\frmSelectHDPL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Human\frmSelectHDPL.designer.cs">
+      <DependentUpon>frmSelectHDPL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Human\frmEmployee_CongTrinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -715,6 +721,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Human\frmDaoTaoKH_Edit.resx">
       <DependentUpon>frmDaoTaoKH_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Human\frmSelectHDPL.resx">
+      <DependentUpon>frmSelectHDPL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Human\frmEmployee_CongTrinh.resx">
       <DependentUpon>frmEmployee_CongTrinh.cs</DependentUpon>

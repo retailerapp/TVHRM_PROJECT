@@ -113,7 +113,7 @@ namespace Epoint.Controllers
             if (drEdit["File_Type"].ToString() == "IMG")
                 SaveResource.SaveImage(this.drEdit["File_Id"].ToString(), this.drEdit["File_Name"].ToString(), this.drEdit["Ma_Nhom"].ToString(), this.drEdit["Catalog"].ToString(), this.drEdit["File_Type"].ToString(), this.drEdit["File_Tag"].ToString(), picImage, (DateTime)this.drEdit["Ngay_Ky"], this.drEdit["Nguoi_Ky"].ToString(), (bool)this.drEdit["Duyet"]);
             else
-                SaveResource.Save(this.drEdit["File_Id"].ToString(), this.drEdit["File_Name"].ToString(), this.drEdit["Ma_Nhom"].ToString(), this.drEdit["Catalog"].ToString(), this.drEdit["File_Type"].ToString(), this.drEdit["File_Tag"].ToString(), this.objFileContent, (DateTime)this.drEdit["Ngay_Ky"], this.drEdit["Nguoi_Ky"].ToString(), (bool)this.drEdit["Duyet"]);
+                SaveResource.Save(this.drEdit["File_Id"].ToString(), this.drEdit["File_Name"].ToString(), this.drEdit["Ma_Nhom"].ToString(), this.drEdit["Catalog"].ToString(), this.drEdit["File_Type"].ToString(), this.drEdit["File_Tag"].ToString(), this.objFileContent, (DateTime)this.drEdit["Ngay_Ky"], this.drEdit["Nguoi_Ky"].ToString(), (bool)this.drEdit["Duyet"],this.drEdit["Description"].ToString());
 
             return true;
 

@@ -18,7 +18,7 @@ namespace Epoint.Controllers
 {
     public class SaveResource
     {
-        public static bool Save(string strFile_ID, string strFile_Name, string strMa_Nhom, string strCatalog, string strFile_Type, string strFile_Tag, object objFile_Content, DateTime dteNgay_Ky, string strNguoi_Ky, bool bDuyet)
+        public static bool Save(string strFile_ID, string strFile_Name, string strMa_Nhom, string strCatalog, string strFile_Type, string strFile_Tag, object objFile_Content, DateTime dteNgay_Ky, string strNguoi_Ky, bool bDuyet, string strDescription)
         {
             string str;
             Hashtable htSQLPara = new Hashtable();
@@ -30,17 +30,18 @@ namespace Epoint.Controllers
             htSQLPara.Add("FILE_TAG", strFile_Tag);
             htSQLPara.Add("FILE_CONTENT", (objFile_Content == null) ? new byte[0] : ((byte[])objFile_Content));
             htSQLPara.Add("NGAY_KY", dteNgay_Ky);
-            htSQLPara.Add("NGUOI_KY", strNguoi_Ky);
+            htSQLPara.Add("NGUOI_KY", strNguoi_Ky);  
+            htSQLPara.Add("DESCRIPTION", strDescription);
             htSQLPara.Add("DUYET", bDuyet);
 
             if (DataTool.SQLCheckExist("SYSRESOURCES", new string[] { "File_Id" }, new object[] { strFile_ID }))
             {
-                str = "UPDATE SYSRESOURCES SET File_Content = @File_Content WHERE File_Id = @File_Id";                
+                str = "UPDATE SYSRESOURCES SET File_Content = @File_Content,Description = @Description  WHERE File_Id = @File_Id";                
             }
             else
             {
-                str = "INSERT INTO SYSRESOURCES (File_Id, File_Name, Ma_Nhom, Catalog, File_Type, File_Tag, File_Content, Ngay_Ky, Nguoi_Ky, Duyet)" +
-                        " VALUES (@File_Id, @File_Name, @Ma_Nhom, @Catalog, @File_Type,@FILE_TAG, @File_Content, @Ngay_Ky, @Nguoi_Ky, @Duyet)";                
+                str = "INSERT INTO SYSRESOURCES (File_Id, File_Name, Ma_Nhom, Catalog, File_Type, File_Tag, File_Content, Ngay_Ky, Nguoi_Ky,Description, Duyet)" +
+                        " VALUES (@File_Id, @File_Name, @Ma_Nhom, @Catalog, @File_Type,@FILE_TAG, @File_Content, @Ngay_Ky, @Nguoi_Ky,@Description, @Duyet)";                
             }
 
             return SQLExec.Execute(str, htSQLPara, CommandType.Text);
