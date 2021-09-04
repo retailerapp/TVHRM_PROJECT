@@ -419,15 +419,20 @@ namespace Epoint.Modules.HRM
                         return;
 
                     DataRow drCurrentPL = ((DataRowView)bdsHopDongPL.Current).Row;
-                    if (drCurrentPL["File_Id"].ToString() != string.Empty)
-                        HDLD_PL = drCurrentPL["File_Id"].ToString();
-                    else
-                    {
-                        frmSelectHDPL frmSelect = new frmSelectHDPL();
-                        frmSelect.Load();
-                        if (frmSelect.isAccept)
-                            HDLD_PL = frmSelect.FileId;
-                    }
+                    //if (drCurrentPL["File_Id"].ToString() != string.Empty)
+                    //    HDLD_PL = drCurrentPL["File_Id"].ToString();
+                    //else
+                    //{
+                    //    frmSelectHDPL frmSelect = new frmSelectHDPL();
+                    //    frmSelect.Load();
+                    //    if (frmSelect.isAccept)
+                    //        HDLD_PL = frmSelect.FileId;
+                    //}
+
+                    frmSelectHDPL frmSelect = new frmSelectHDPL();
+                    frmSelect.Load();
+                    if (frmSelect.isAccept)
+                        HDLD_PL = frmSelect.FileId;
                     string fileName = DataTool.SQLGetNameByCode("SYSRESOURCES", "FILE_ID", "FILE_ID", HDLD_PL);
                     string strFileTemplate = Application.StartupPath + @"\Template\" + fileName;
 
